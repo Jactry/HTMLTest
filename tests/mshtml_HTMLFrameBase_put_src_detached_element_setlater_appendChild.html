@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo">Click the button:</p>
+    <button onclick="myFunction()">Try it</button>
+    <div id="area"></div>
+
+    <script>
+      var node=document.createElement("IFRAME");
+      document.getElementById("area").appendChild(node);
+      function myFunction()
+      {
+        node.src = "./winehq.png";
+      }
+    </script>
+
+  </body>
+</html>
