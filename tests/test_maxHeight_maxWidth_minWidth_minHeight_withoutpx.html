@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style> 
+      #myDIV
+      {
+      width:50%;
+      background-color:lightblue;
+      }
+    </style>
+    <script>
+      function set_minWidth() {
+      document.getElementById("myDIV").style.minWidth = "200";
+      document.getElementById("myDIV").style.maxWidth = "200";
+      document.getElementById("myDIV").style.minHeight = "200";
+      document.getElementById("myDIV").style.maxHeight = "200";
+
+      document.getElementById("result").innerHTML = "<ul>\
+        <li>minWidth: " + document.getElementById("myDIV").style.maxHeight + "</li>\
+        <li>maxWidth: " + document.getElementById("myDIV").style.maxWidth + "</li>\
+        <li>minHeight: " + document.getElementById("myDIV").style.minHeight + "</li>\
+        <li>maxHeight: " + document.getElementById("myDIV").style.maxHeight + "</li>\
+      </ul>"
+      }
+      window.onload = set_minWidth;
+    </script>
+  </head>
+
+  <body>
+    <div id="myDIV">
+      Tests for setting {min, max}{Width, Height} as number without px.
+    </div>
+    <div id="result">
+    </div>
+  </body>
+</html>
