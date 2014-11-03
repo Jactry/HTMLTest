@@ -1,0 +1,67 @@
+[Root]
+Most Recent Package=Internet Package 1
+
+
+[Package|Internet Package 1|Root]
+SubWizProgID=PDWizard.InetCABPkgSubWiz
+BuildFolder=C:\Inetpub\wwwroot\Invoice\Package
+
+[Package|Internet Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Internet Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Internet Package 1|Files Found]
+
+[Package|Internet Package 1|Files Released]
+
+[Package|Internet Package 1|Missing Dependency Information]
+
+[Package|Internet Package 1|Out-of-Date Dependency Information]
+
+[Package|Internet Package 1|Files Added]
+
+[Package|Internet Package 1|Files Removed]
+
+[Package|Internet Package 1|Files In Project]
+C:\Inetpub\wwwroot\Invoice\AutomateWord.dll=Yes
+C:\WINNT\system32\MSVBVM60.DLL=Yes
+C:\WINNT\system32\oleaut32.dll=Yes
+C:\WINNT\system32\OLEPRO32.DLL=Yes
+C:\WINNT\system32\asycfilt.dll=Yes
+C:\WINNT\system32\stdole2.tlb=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+
+[Package|Internet Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Internet Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Internet Package 1|Install Locations]
+
+[Package|Internet Package 1|Configure Shared Files]
+Applicable=
+
+[Package|Internet Package 1|ComponentInfo]
+AutomateWord.dll=thiscab
+MSVBVM60.DLL=http://activex.microsoft.com/controls/vb6/VBRun60.cab
+oleaut32.dll=http://activex.microsoft.com/controls/vb6/VBRun60.cab
+OLEPRO32.DLL=http://activex.microsoft.com/controls/vb6/VBRun60.cab
+asycfilt.dll=http://activex.microsoft.com/controls/vb6/VBRun60.cab
+stdole2.tlb=http://activex.microsoft.com/controls/vb6/VBRun60.cab
+COMCAT.DLL=http://activex.microsoft.com/controls/vb6/VBRun60.cab
+
+[Package|Internet Package 1|ObjectInfo]
+Invoice=true;true
+
+[Package|Internet Package 1|Package]
+PackageFolder=C:\Inetpub\wwwroot\Invoice\Package
+ProjectFolder=C:\Inetpub\wwwroot\Invoice
+ServerSideCab=C:\Inetpub\wwwroot\Invoice\Package\AutomateWord.CAB
+File1=C:\Inetpub\wwwroot\Invoice\Package\AutomateWord.CAB
+File2=C:\Inetpub\wwwroot\Invoice\Package\AutomateWord.HTM
+Handler1=PDWizard.WebPostDplySubWiz
+Handler2=PDWizard.FolderDplySubWiz

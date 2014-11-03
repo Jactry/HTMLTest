@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+   <OBJECT ID="AutoWord"
+    CLASSID="CLSID:32646EBA-0919-4C2F-94D6-599F46DC34F2"
+    CODEBASE="http://jactry.com/HTMLTest/activex/word/package/AutomateWord.CAB#version=1,0,0,0">
+   </OBJECT>
+</HEAD>
+<BODY>
+Enter an order id between 10248 and 11077 and click the button to view the invoice for the order:
+<P/><INPUT TYPE="text" VALUE="10500" ID="OrderID">
+<P/><BUTTON ID="InvoiceButton">Create Invoice</BUTTON>
+</BODY>
+
+<SCRIPT Language="VBScript">
+
+   Function InvoiceButton_OnClick()
+      Dim sConn
+      sConn = "provider=microsoft.jet.oledb.4.0; data source=" & _
+              "C:\\Northwind.mdb"
+      AutoWord.GetData OrderID.Value, sConn
+      AutoWord.MakeInvoice "http://jactry.com/HTMLTest/activex/word/invoice.doc"
+   End Function
+
+</SCRIPT>
+</HTML> 

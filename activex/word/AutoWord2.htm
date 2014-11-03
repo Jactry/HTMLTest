@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+   <OBJECT ID="AutoWord"
+    CLASSID="CLSID:32646EBA-0919-4C2F-94D6-599F46DC34F2"
+    CODEBASE="http://jactry.com/HTMLTest/activex/word/package/AutomateWord.CAB#version=1,0,0,0">
+   </OBJECT>
+</HEAD>
+<BODY>
+   <BUTTON ID="InvoiceButton">Create Invoice</BUTTON>
+   <XML ID="DataXML">
+     <Order>
+        <OrderID>10700</OrderID>
+        <OrderDate>10/10/2000</OrderDate>
+        <CustID>SAVEA</CustID>
+        <CustInfo>Save-a-lot
+Markets Boise ID 83720
+USA</CustInfo>
+        <Items>
+           <Product Desc="Chai" Qty="5" Price="18" Disc="0.2"/>
+           <Product Desc="Sasquatch Ale" Qty="12" Price="14" Disc="0.2"/>
+           <Product Desc="Scottish Longbreads" Qty="40" Price="12.5" Disc="0.2"/>
+           <Product Desc="Flotemysost" Qty="60" Price="21.5" Disc="0.2"/>
+        </Items>        
+     </Order>
+   </XML>
+</BODY>
+
+<SCRIPT Language="VBScript">
+  
+   Function InvoiceButton_OnClick()
+      AutoWord.SendData DataXML.XMLDocument
+      AutoWord.MakeInvoice "http://jactry.com/HTMLTest/activex/word/invoice.doc"
+   End Function
+
+</SCRIPT>
+</HTML> 
