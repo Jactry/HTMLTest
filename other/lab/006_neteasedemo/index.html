@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<head>
+	<meta charset="utf-8"/>
+	<meta content="target-densitydpi=device-dpi,width=640" name="viewport">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<title>LG OLED</title>
+</head>
+<body>
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+	<div data-role="page" id="index">
+		<div class="hd">
+			<img class="img-hd" src="images/hd.jpg" alt="LG OLED" />
+		</div>
+		<div class="content">
+			<div class="title title-1"></div>
+			<div class="sec sec-1">
+				<div class="item active">
+					<img class="img-1-1" src="images/1_1.jpg" alt="LG OLED" />
+				</div>
+				<div class="item">
+					<img class="img-1-2" src="images/1_2.jpg" alt="LG OLED" />
+				</div>
+				<ol class="indicator">
+					<li class="active">
+						<span></span>
+					</li>
+					<li>
+						<span></span>
+					</li>
+				</ol>
+			</div>
+			<div class="title title-2"></div>
+			<div class="sec sec-2">
+				<div class="item">
+					<img class="img-2-1" src="images/2_1.jpg" alt="LG OLED" />
+				</div>
+				<div class="item active">
+					<img class="img-2-2" src="images/2_2.jpg" alt="LG OLED" />
+				</div>
+				<div class="item">
+					<img class="img-2-3" src="images/2_3.jpg" alt="LG OLED" />
+				</div>
+				<div class="item">
+					<img class="img-2-4" src="images/2_4.jpg" alt="LG OLED" />
+				</div>
+				<div class="item">
+					<img class="img-2-5" src="images/2_5.jpg" alt="LG OLED" />
+				</div>
+				<ol class="indicator">
+					<li>
+						<span></span>
+					</li>
+					<li class="active">
+						<span></span>
+					</li>
+					<li>
+						<span></span>
+					</li>
+					<li>
+						<span></span>
+					</li>
+					<li>
+						<span></span>
+					</li>
+				</ol>
+			</div>
+			<div class="title title-3"></div>
+			<div class="sec sec-3">
+				<div class="item active">
+					<img class="img-3-1" src="images/3_1.jpg" alt="LG OLED" />
+				</div>
+				<div class="item">
+					<img class="img-3-2" src="images/3_2.jpg" alt="LG OLED" />
+				</div>
+				<ol class="indicator">
+					<li class="active">
+						<span></span>
+					</li>
+					<li>
+						<span></span>
+					</li>
+				</ol>
+			</div>
+
+			<div class="slider"></div>
+			</div>
+		</div>
+
+	<script>
+
+	$(document).on("pageinit","#index",function(){
+		$('.sec-1,.sec-2,.sec-3')
+			.on('swipeleft',function(){
+				var	$this=$(this); // sec
+
+					if($this.hasClass('sliding')) {
+						return;
+					}
+					else{
+						$this.addClass('sliding');
+					}
+
+				var	$items=$this.children('.item'),
+					$activeItem=$this.children('.item.active'),
+					$nextItem=$activeItem.next('.item'),
+					$indicator=$this.children('.indicator'),
+					$lis=$indicator.children('li'),
+					// $activeLi=$lis.eq(index),
+					$activeLi=$indicator.children('li.active'),
+					$nextLi=$activeLi.next('li');
+
+					// 最后一项时
+					if($nextItem.length===0){
+						$nextItem=$items.eq(0);
+					}
+					if($nextLi.length===0){
+						$nextLi=$lis.eq(0);
+					}
+
+					$activeLi.removeClass('active');
+					$nextLi.addClass('active');
+
+					$activeItem.addClass('slide-r2l').one('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd',function(){
+						$(this).removeClass('slide-r2l active');
+					})
+					$nextItem.addClass('slide-r2l next').one('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd',function(){
+						$(this).removeClass('slide-r2l next').addClass('active');
+						$this.removeClass('sliding');
+					})
+
+			}).on('swiperight',function(){
+				var	$this=$(this); // sec
+
+					if($this.hasClass('sliding')) {
+						return;
+					}
+					else{
+						$this.addClass('sliding');
+					}
+
+				var	$items=$this.children('.item'),
+					$activeItem=$this.children('.item.active'),
+					$prevItem=$activeItem.prev('.item'),
+					$indicator=$this.children('.indicator'),
+					$lis=$indicator.children('li'),
+					// $activeLi=$lis.eq(index),
+					$activeLi=$indicator.children('li.active'),
+					$prevLi=$activeLi.prev('li');
+
+					// 第一项时
+					if($prevItem.length===0){
+						$prevItem=$items.eq($items.length-1);
+					}
+					if($prevLi.length===0){
+						$prevLi=$lis.eq($lis.length-1);
+					}
+
+					$activeLi.removeClass('active');
+					$prevLi.addClass('active');
+
+					$activeItem.addClass('slide-l2r').one('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd',function(){
+						$(this).removeClass('slide-l2r active');
+					})
+					$prevItem.addClass('slide-l2r prev').one('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd',function(){
+						$(this).removeClass('slide-l2r prev').addClass('active');
+						$this.removeClass('sliding');
+					})
+			})
+	});
+
+	$(document).on("scroll",function(){
+	  	var $slider=$('.slider'),
+	  	    $content=$('.content'),
+	  	    $title3=$('.title-3'),
+	  		top=$(this).scrollTop(),
+	  		contentTop=$content.position().top;
+	  		title3Top=$title3.position().top+contentTop+5;
+		if(top>contentTop&&top<title3Top){
+			$slider.removeClass('bottom').addClass('fixed');
+		}
+		else{
+		    $slider.removeClass('fixed');
+		    if(top>title3Top){
+		    	$slider.addClass('bottom');
+		    }
+		}
+	});
+
+	</script>
+</body>
